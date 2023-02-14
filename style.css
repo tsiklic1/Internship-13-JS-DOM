@@ -27,9 +27,35 @@
   height: 42px;
   border: solid 1px black;
   border-radius: 4px;
+  background-color: transparent;
+  /* color: red  - ovdi styleaš tekst koji je unutar inputa*/
 
 }
 
-.back-red{
-  background-color: red;
+.input-container-box__dropdown{
+  border: 1px solid black;
+}
+
+.dropdown{
+  position: relative;
+}
+
+.dropdown-menu{
+  position: absolute;
+  left: 0;
+  top: 110%;
+  background-color: white;
+  box-shadow: 0 2px 5px #00000033;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+  pointer-events: none;
+}
+
+/* kad je aktivno- pointer-events: auto, opacity: 1, tranform: 0 */
+
+.dropdown-menu__active{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
