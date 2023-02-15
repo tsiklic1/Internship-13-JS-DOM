@@ -1,5 +1,9 @@
 const inputContainerTexts = document.querySelectorAll('.input-container--text');
 const inputBoxes = document.querySelectorAll('.input-container-box');
+const errorTexts = document.querySelectorAll('.input-container--error-text')
+
+let firstNameValue;
+let lastNameValue;
 
 inputBoxes.forEach((inputBox) => (inputBox.defaultValue = 'User'))
 
@@ -20,7 +24,6 @@ for (let i = 0; i<inputBoxes.length; i++){
     inputBoxes[i].style.outlineColor = '#1360a0'
     inputContainerTexts[i].style.color = '#1360a0';
     inputBoxes[i].style.border = '2px solid #1360a0'
-
   })
 }
 
@@ -30,6 +33,28 @@ for (let i = 0; i<inputBoxes.length; i++){
     inputBoxes[i].style.border = '1px solid black'
 
   })
+}
+
+inputBoxes[0].onkeyup = (e)=>{
+  firstNameValue = e.target.value
+  if(!firstNameValue){
+    inputBoxes[0].blur()
+    errorTexts[0].classList.add('input-container--error-text__active')
+  }
+  else if(errorTexts[0].classList.contains('input-container--error-text__active')){
+    errorTexts[0].classList.remove('input-container--error-text__active')
+  }
+}
+
+inputBoxes[1].onkeyup = (e)=>{
+  lastNameValue = e.target.value
+  if(!lastNameValue){
+    inputBoxes[1].blur()
+    errorTexts[1].classList.add('input-container--error-text__active')
+  }
+  else if(errorTexts[1].classList.contains('input-container--error-text__active')){
+    errorTexts[1].classList.remove('input-container--error-text__active')
+  }
 }
 
 const dropdownSelects = document.querySelectorAll('.dropdown--select')

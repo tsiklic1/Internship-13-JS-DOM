@@ -47,6 +47,19 @@
   font-size: 14px;
 }
 
+.input-container--error-text{
+  font-size: 8px;
+  color: #b30000;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease-in-out
+}
+
+.input-container--error-text__active{
+  opacity: 1;
+  pointer-events: auto;
+}
 
 .dropdown{
   position: relative;
