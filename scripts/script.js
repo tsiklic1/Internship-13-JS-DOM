@@ -1,21 +1,4 @@
-// const testInput = document.querySelectorAll('.input-container-box')[0];
-// console.log(testInput)
-// testInput.style.backgroundColor = 'blue';
-
-// testInput.addEventListener('mouseover', function(e){
-//   // this.classList.add('back-red')
-//   testInput.style.backgroundColor = 'red'
-// })
-
 const inputContainerTexts = document.querySelectorAll('.input-container--text');
-// for (let i = 0; i<inputContainerTexts.length; i++){
-//   inputContainerTexts[i].addEventListener('click', function(e){
-//     console.log(inputContainerTexts[i]);
-//     inputContainerTexts[i].style.color = 'red';
-//   })
-// }
-
-
 const inputBoxes = document.querySelectorAll('.input-container-box');
 
 inputBoxes.forEach((inputBox) => (inputBox.defaultValue = 'User'))
@@ -36,35 +19,77 @@ for (let i = 0; i<inputBoxes.length; i++){
   inputBoxes[i].addEventListener('focus', function(e){
     inputBoxes[i].style.outlineColor = '#1360a0'
     inputContainerTexts[i].style.color = '#1360a0';
+    inputBoxes[i].style.border = '2px solid #1360a0'
+
   })
 }
 
 for (let i = 0; i<inputBoxes.length; i++){
   inputBoxes[i].addEventListener('blur', function(e){
     inputContainerTexts[i].style.color = '#414141';
+    inputBoxes[i].style.border = '1px solid black'
+
   })
 }
 
-// const dropdowns = document.querySelectorAll('.dropdown');
-const inputBoxDropdowns = document.querySelectorAll('.input-container-box__dropdown')
-console.log(inputBoxDropdowns)
-
+const dropdownSelects = document.querySelectorAll('.dropdown--select')
 const dropdownMenus = document.querySelectorAll('.dropdown-menu') 
+const dropdownInputContainerTexts = document.querySelectorAll('.input-container--text__dropdown')
+const arrows = document.querySelectorAll('.arrow-down')
 
 
+dropdownSelects.forEach((dropdownSelect) => {
+  dropdownSelect.addEventListener('mouseover', function(e){
+    dropdownSelect.style.backgroundColor = '#1360a011';
+  })
+})
 
-for(let i = 0; i<inputBoxDropdowns.length; i++){
-  inputBoxDropdowns[i].addEventListener('focus', function(e){
-    inputBoxDropdowns[i].style.border = '2px solid #1360a0'
+dropdownSelects.forEach((dropdownSelect) => {
+  dropdownSelect.addEventListener('mouseout', function(e){
+    dropdownSelect.style.backgroundColor = 'transparent';
+  })
+})
+
+for(let i = 0; i<dropdownSelects.length; i++){
+  dropdownSelects[i].addEventListener('focus', function(e){
     dropdownMenus[i].classList.add('dropdown-menu__active')
+    dropdownInputContainerTexts[i].style.color = '#1360a0'
+    dropdownSelects[i].style.border = '2px solid #1360a0'
+    arrows[i].classList.add('arrow-down__rotate')
 
+
+  })
+
+  dropdownSelects[i].addEventListener('blur', function(e){  
+    
+    
+    dropdownInputContainerTexts[i].style.color = '#414141';
+    dropdownSelects[i].style.border = '1px solid black';
+    arrows[i].classList.remove('arrow-down__rotate')
+
+
+    if(e.relatedTarget === null || !e.relatedTarget.classList.contains('dropdown-menu')){
+      dropdownMenus[i].classList.remove('dropdown-menu__active')
+    }
+
+    else{
+      dropdownSelects[i].focus()
+    }
   })
 }
 
-for(let i = 0; i<inputBoxDropdowns.length; i++){
-  inputBoxDropdowns[i].addEventListener('blur', function(e){
-    inputBoxDropdowns[i].style.border = '1px solid black'
-    dropdownMenus[i].classList.remove('dropdown-menu__active')
+const selecteds = document.querySelectorAll('.selected')
+const dropdownMenuChoicesLeft = dropdownMenus[0].querySelectorAll('.dropdown-menu--choice')
+const dropdownMenuChoicesRight = dropdownMenus[1].querySelectorAll('.dropdown-menu--choice')
 
+dropdownMenuChoicesLeft.forEach(choice => {
+  choice.addEventListener('click', function(e){
+    selecteds[0].innerHTML = choice.innerHTML
   })
-}
+})
+
+dropdownMenuChoicesRight.forEach(choice => {
+  choice.addEventListener('click', function(e){
+    selecteds[1].innerHTML = choice.innerHTML
+  })
+})

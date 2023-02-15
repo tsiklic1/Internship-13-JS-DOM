@@ -41,28 +41,63 @@
 
     <div class="section">
       <div class="input-container">
-        <p class="input-container--text">What level do you primarily teach?</p>
+        <p class="input-container--text__dropdown">What level do you primarily teach?</p>
+
         <div class="dropdown">
-          <button
-            class="input-container-box input-container-box__dropdown"
-          ></button>
-          <div class="dropdown-menu">dropdown content</div>
+          <!-- <button class="dropdown--select input-container-box"> -->
+
+          <button class="dropdown--select">
+            <span class="selected">Elementary School</span>
+            <div>
+              <svg class="arrow-down" viewBox="0 0 512 512">
+                <path
+                  fill="#414141"
+                  d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 
+                  0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <ul class="dropdown-menu" tabindex="-1">
+            <li class="dropdown-menu--choice dropdown-menu--choice__active">Elementary School</li>
+            <li class="dropdown-menu--choice">Middle School</li>
+            <li class="dropdown-menu--choice">High School</li>
+          </ul>
         </div>
+
       </div>
       <div class="input-container">
-        <p class="input-container--text">How long have you been teaching?</p>
+        <p class="input-container--text__dropdown">How long have you been teaching?</p>
         <div class="dropdown">
-          <button
-            class="input-container-box input-container-box__dropdown"
-          ></button>
-          <div class="dropdown-menu">dropdown content</div>
+          <!-- ode si isto maka -->
+            <button class="dropdown--select">
+              <span class="selected">1-5 years</span>
+              <div>
+                <svg class="arrow-down" viewBox="0 0 512 512">
+                  <path
+                    fill="#414141"
+                    d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 
+                    0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                  />
+                </svg>
+              </div>
+            </button>
+  
+            <ul class="dropdown-menu" tabindex="-1">
+              <li class="dropdown-menu--choice dropdown-menu--choice__active">1-5 years</li>
+              <li class="dropdown-menu--choice">5-10 years</li>
+              <li class="dropdown-menu--choice">10-20 years</li>
+              <li class="dropdown-menu--choice">20+ years</li>
+            </ul>
+          
         </div>
       </div>
     </div>
-    <!-- <div class="section">
-      <div>Change Password</div>
-      <div>Save changes</div>
-    </div> -->
+    <div class="section section__bottom">
+      <div><a class="changePassword" href="https://www.youtube.com/watch?v=zOMrz-8Y8_4">Change Password</a></div>
+      <div><span class="saveChanges">Save changes</span></div>
+    </div>
 
     <script src="scripts/script.js"></script>
   </body>

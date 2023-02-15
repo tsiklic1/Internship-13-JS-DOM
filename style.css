@@ -5,6 +5,11 @@
 
 .arrow-down{
   width: 16px;
+  transition: 200ms
+}
+
+.arrow-down__rotate{
+  transform: rotate(180deg);
 }
 
 .section{
@@ -36,8 +41,26 @@
   border: 1px solid black;
 }
 
+.input-container--text__dropdown{
+  font-weight: 700;
+  color: #414141;
+  font-size: 14px;
+}
+
+
 .dropdown{
   position: relative;
+}
+
+.dropdown--select{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 42px;
+  border: solid 1px black;
+  border-radius: 4px;
+  background-color: transparent;
 }
 
 .dropdown-menu{
@@ -50,12 +73,40 @@
   transform: translateY(-10px);
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
   pointer-events: none;
+  list-style: none;
+  padding-left: 0;
+  width: 100%
 }
-
-/* kad je aktivno- pointer-events: auto, opacity: 1, tranform: 0 */
 
 .dropdown-menu__active{
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.dropdown-menu--choice{
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.section__bottom{
+  margin-top: 32px;
+  width: 530px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.changePassword{
+  color: #00447c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.saveChanges{
+  background-color: #00447c;
+  color: white;
+  border-radius: 16px;
+  padding: 8px 16px;
 }
