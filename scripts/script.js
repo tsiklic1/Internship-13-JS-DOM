@@ -4,6 +4,9 @@ const errorTexts = document.querySelectorAll('.input-container--error-text')
 
 let firstNameValue;
 let lastNameValue;
+let selectedLevel;
+let selectedYears;
+let key = 0;
 
 inputBoxes.forEach((inputBox) => (inputBox.defaultValue = 'User'))
 
@@ -37,22 +40,14 @@ for (let i = 0; i<inputBoxes.length; i++){
 
 inputBoxes[0].onkeyup = (e)=>{
   firstNameValue = e.target.value
-  if(!firstNameValue){
-    inputBoxes[0].blur()
-    errorTexts[0].classList.add('input-container--error-text__active')
-  }
-  else if(errorTexts[0].classList.contains('input-container--error-text__active')){
+  if(firstNameValue.length){
     errorTexts[0].classList.remove('input-container--error-text__active')
   }
 }
 
 inputBoxes[1].onkeyup = (e)=>{
   lastNameValue = e.target.value
-  if(!lastNameValue){
-    inputBoxes[1].blur()
-    errorTexts[1].classList.add('input-container--error-text__active')
-  }
-  else if(errorTexts[1].classList.contains('input-container--error-text__active')){
+  if(lastNameValue.length){
     errorTexts[1].classList.remove('input-container--error-text__active')
   }
 }
@@ -107,6 +102,26 @@ const selecteds = document.querySelectorAll('.selected')
 const dropdownMenuChoicesLeft = dropdownMenus[0].querySelectorAll('.dropdown-menu--choice')
 const dropdownMenuChoicesRight = dropdownMenus[1].querySelectorAll('.dropdown-menu--choice')
 
+let content = document.querySelector('#content')
+console.log(typeof(content.innerHTML))
+
+
+const localStorageItems = {...localStorage}
+const localStorageObjectStrings = Object.values(localStorageItems)
+const localStorageObjects = localStorageObjectStrings.map(objectString  => JSON.parse(objectString))
+console.log(localStorageObjects)
+localStorageObjects.forEach(localStorageObject => {
+  content.innerHTML += localStorageObject.firstNameValue + ' ' +
+                        localStorageObject.lastNameValue + ', ' +
+                        localStorageObject.selectedLevel + ', ' +
+                        localStorageObject.selectedYears + '<br>'
+
+})
+
+
+
+
+
 dropdownMenuChoicesLeft.forEach(choice => {
   choice.addEventListener('click', function(e){
     selecteds[0].innerHTML = choice.innerHTML
@@ -117,4 +132,50 @@ dropdownMenuChoicesRight.forEach(choice => {
   choice.addEventListener('click', function(e){
     selecteds[1].innerHTML = choice.innerHTML
   })
+})
+
+const saveChangesButton = document.querySelector('#saveChanges')
+saveChangesButton.addEventListener('click', function(e){
+
+  firstNameValue = inputBoxes[0].value
+  lastNameValue = inputBoxes[1].value
+  selectedLevel = document.querySelector('#selected-level').innerHTML
+  selectedYears = document.querySelector('#selected-years').innerHTML
+
+  const user = {
+    firstNameValue,
+    lastNameValue,
+    selectedLevel,
+    selectedYears
+  }
+
+  if(!user.firstNameValue){
+    errorTexts[0].classList.add('input-container--error-text__active')
+    inputBoxes[0].style.borderColor = '#b30000'
+    return
+  }
+
+  if(!user.lastNameValue){
+    errorTexts[1].classList.add('input-container--error-text__active')
+    inputBoxes[1].style.borderColor = '#b30000'
+    return
+  }
+
+  
+  if(localStorage.length){
+    let maxKey = -1
+    for(let i = 0; i<localStorage.length; i++){
+      if(+localStorage.key(i) > maxKey){
+        maxKey = +localStorage.key(i)
+      }
+    }
+    key = maxKey + 1
+  }
+  localStorage.setItem(JSON.stringify(key), JSON.stringify(user))
+
+  content.innerHTML += user.firstNameValue + ' ' +
+                        user.lastNameValue + ', ' +
+                        user.selectedLevel + ', ' +
+                        user.selectedYears + '<br>'
+  
 })

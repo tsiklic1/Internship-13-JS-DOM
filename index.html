@@ -49,7 +49,7 @@
           <!-- <button class="dropdown--select input-container-box"> -->
 
           <button class="dropdown--select">
-            <span class="selected">Elementary School</span>
+            <span class="selected" id="selected-level">Elementary School</span>
             <div>
               <svg class="arrow-down" viewBox="0 0 512 512">
                 <path
@@ -72,9 +72,8 @@
       <div class="input-container">
         <p class="input-container--text__dropdown">How long have you been teaching?</p>
         <div class="dropdown">
-          <!-- ode si isto maka -->
             <button class="dropdown--select">
-              <span class="selected">1-5 years</span>
+              <span class="selected" id="selected-years">1-5 years</span>
               <div>
                 <svg class="arrow-down" viewBox="0 0 512 512">
                   <path
@@ -98,7 +97,12 @@
     </div>
     <div class="section section__bottom">
       <div><a class="changePassword" href="https://www.youtube.com/watch?v=zOMrz-8Y8_4">Change Password</a></div>
-      <div><span class="saveChanges">Save changes</span></div>
+      <div><span id="saveChanges">Save changes</span></div>
+    </div>
+
+    <div>
+      <h2>Content:</h2>
+      <p id = "content"></p>
     </div>
 
     <script src="scripts/script.js"></script>

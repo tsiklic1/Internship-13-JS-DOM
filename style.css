@@ -48,7 +48,7 @@
 }
 
 .input-container--error-text{
-  font-size: 8px;
+  font-size: 10px;
   color: #b30000;
   font-weight: 700;
   opacity: 0;
@@ -106,7 +106,7 @@
 
 .section__bottom{
   margin-top: 32px;
-  width: 530px;
+  width: 560px;
   display: flex;
   justify-content: space-between;
 }
@@ -117,9 +117,9 @@
   text-decoration: none;
 }
 
-.saveChanges{
+#saveChanges{
   background-color: #00447c;
   color: white;
-  border-radius: 16px;
-  padding: 8px 16px;
+  border-radius: 20px;
+  padding: 12px 20px;
 }
