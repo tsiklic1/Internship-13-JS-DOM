@@ -12,13 +12,17 @@ inputBoxes.forEach((inputBox) => (inputBox.defaultValue = 'User'))
 
 inputBoxes.forEach((inputBox) => {
   inputBox.addEventListener('mouseover', function(e){
-    inputBox.style.backgroundColor = '#1360a011';
+    if(inputBox !== document.activeElement){
+      inputBox.style.backgroundColor = '#1360a011';
+    }
   })
 })
 
 inputBoxes.forEach((inputBox) => {
   inputBox.addEventListener('mouseout', function(e){
-    inputBox.style.backgroundColor = 'transparent';
+    if(inputBox !== document.activeElement){
+      inputBox.style.backgroundColor = 'transparent';
+    }
   })
 })
 
@@ -27,6 +31,8 @@ for (let i = 0; i<inputBoxes.length; i++){
     inputBoxes[i].style.outlineColor = '#1360a0'
     inputContainerTexts[i].style.color = '#1360a0';
     inputBoxes[i].style.border = '2px solid #1360a0'
+
+    styleBackgroundColorOfInput(inputBoxes[i], e.target.value.length)
   })
 }
 
@@ -34,7 +40,7 @@ for (let i = 0; i<inputBoxes.length; i++){
   inputBoxes[i].addEventListener('blur', function(e){
     inputContainerTexts[i].style.color = '#414141';
     inputBoxes[i].style.border = '1px solid black'
-
+    inputBoxes[i].style.backgroundColor = 'transparent'
   })
 }
 
@@ -43,12 +49,36 @@ inputBoxes[0].onkeyup = (e)=>{
   if(firstNameValue.length){
     errorTexts[0].classList.remove('input-container--error-text__active')
   }
+  // if(inputBoxes[0]===document.activeElement && e.target.value.length >= 4){
+  //   inputBoxes[0].style.backgroundColor = 'lime'
+  // }
+  // else if(inputBoxes[0]===document.activeElement && e.target.value.length === 0){
+  //   inputBoxes[0].style.backgroundColor = 'pink'
+  // }
+  // else{
+  //   inputBoxes[0].style.backgroundColor = 'transparent'
+
+  // }
+  styleBackgroundColorOfInput(inputBoxes[0], e.target.value.length)
 }
 
 inputBoxes[1].onkeyup = (e)=>{
   lastNameValue = e.target.value
   if(lastNameValue.length){
     errorTexts[1].classList.remove('input-container--error-text__active')
+  }
+  styleBackgroundColorOfInput(inputBoxes[1], e.target.value.length)
+}
+
+function styleBackgroundColorOfInput (inputBox, targetValueLength){
+  if(inputBox===document.activeElement && targetValueLength >= 4){
+    inputBox.style.backgroundColor = 'lime'
+  }
+  else if(inputBox===document.activeElement && targetValueLength === 0){
+    inputBox.style.backgroundColor = 'pink'
+  }
+  else{
+    inputBox.style.backgroundColor = 'transparent'
   }
 }
 
