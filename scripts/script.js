@@ -102,6 +102,8 @@ const selecteds = document.querySelectorAll('.selected')
 const dropdownMenuChoicesLeft = dropdownMenus[0].querySelectorAll('.dropdown-menu--choice')
 const dropdownMenuChoicesRight = dropdownMenus[1].querySelectorAll('.dropdown-menu--choice')
 
+console.log(dropdownMenuChoicesLeft)
+
 let content = document.querySelector('#content')
 console.log(typeof(content.innerHTML))
 
@@ -115,22 +117,37 @@ localStorageObjects.forEach(localStorageObject => {
                         localStorageObject.lastNameValue + ', ' +
                         localStorageObject.selectedLevel + ', ' +
                         localStorageObject.selectedYears + '<br>'
-
 })
 
 
+const clickedChoicesLeft = [];
+const clickedChoicesRight = [];
 
+
+function styleClickedChoice(clickedChoices,choice){
+  if(clickedChoices.length){
+    if(clickedChoices[0].classList.contains('dropdown-menu--choice__clicked'))
+    clickedChoices[0].classList.remove('dropdown-menu--choice__clicked')
+    clickedChoices.pop()
+  }
+  clickedChoices.push(choice)
+  choice.classList.add('dropdown-menu--choice__clicked')
+}
 
 
 dropdownMenuChoicesLeft.forEach(choice => {
   choice.addEventListener('click', function(e){
     selecteds[0].innerHTML = choice.innerHTML
+    styleClickedChoice(clickedChoicesLeft, choice)
   })
 })
+
 
 dropdownMenuChoicesRight.forEach(choice => {
   choice.addEventListener('click', function(e){
     selecteds[1].innerHTML = choice.innerHTML
+    styleClickedChoice(clickedChoicesRight, choice)
+
   })
 })
 

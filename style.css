@@ -18,13 +18,14 @@
 
 .input-container{
   width: 270px;
-  margin-right: 28px;
+  margin-right: 14px;
 }
 
 .input-container--text{
   font-weight: 700;
   color: #414141;
   font-size: 14px;
+  margin-bottom: 6px
 }
 
 .input-container-box{
@@ -33,27 +34,36 @@
   border: solid 1px black;
   border-radius: 4px;
   background-color: transparent;
-  /* color: red  - ovdi styleaš tekst koji je unutar inputa*/
+  font-size: 14px;
+  padding-left: 8px;
+}
 
+.input-container-box::placeholder{
+  font-size: 14px;
 }
 
 .input-container-box__dropdown{
   border: 1px solid black;
+
 }
 
 .input-container--text__dropdown{
   font-weight: 700;
   color: #414141;
   font-size: 14px;
+  margin-bottom: 6px;
+  margin-top: 8px;
 }
 
 .input-container--error-text{
-  font-size: 10px;
+  font-size: 12px;
   color: #b30000;
   font-weight: 700;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 200ms ease-in-out
+  transition: opacity 200ms ease-in-out;
+  margin-top: 4px;
+  margin-bottom: 0;
 }
 
 .input-container--error-text__active{
@@ -76,19 +86,28 @@
   background-color: transparent;
 }
 
+.selected{
+  font-size: 14px;
+  font-weight: bold;
+  color: #1360a0;
+  margin-left: 8px;
+}
+
 .dropdown-menu{
   position: absolute;
   left: 0;
-  top: 110%;
+  top: 100%;
   background-color: white;
-  box-shadow: 0 2px 5px #00000033;
+  box-shadow: 0 2px 5px #00000088;
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
   pointer-events: none;
   list-style: none;
   padding-left: 0;
-  width: 100%
+  width: 100%;
+  border-radius: 14px;
+  padding-left: 8px;
 }
 
 .dropdown-menu__active{
@@ -102,11 +121,17 @@
   height: 42px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-menu--choice__clicked{
+  font-weight: 700;
+  color: #1360a0;
 }
 
 .section__bottom{
   margin-top: 32px;
-  width: 560px;
+  width: 550px;
   display: flex;
   justify-content: space-between;
 }
@@ -122,4 +147,9 @@
   color: white;
   border-radius: 20px;
   padding: 12px 20px;
+  cursor: pointer;
+}
+
+.content-wrapper{
+  margin-top: 105px
 }
